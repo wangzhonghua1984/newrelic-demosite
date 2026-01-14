@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: newrelic-infra-manager
+  namespace: argocd
+spec:
+  destination:
+    namespace: newrelic-infra-manager
+    server: https://kubernetes.default.svc
+
+  project: newrelic-infra-manager
+
+  sources:
+    - helm:
+        valueFiles:
+          - values.yaml
+          - $values/values.yaml
+      path: helm-chart
+      repoURL: https://github.com/wangzhonghua1984/newrelic-manager-gitops.git
+      targetRevision: main
+    - ref: values
+      repoURL: https://github.com/wangzhonghua1984/newrelic-demosite.git
+      targetRevision: main
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
