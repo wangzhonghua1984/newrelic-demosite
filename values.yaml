@@ -37,6 +37,9 @@ revisionHistoryLimit: 10
 
 redis:
   enabled: true
+  image:
+    repository: redis
+    tag: 7-alpine
   persistence:
     size: 1Gi
 
