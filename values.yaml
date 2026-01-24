@@ -1,4 +1,4 @@
-replicaCount: 1
+replicaCount: 3
 
 image:
   repository: ghcr.io/wangzhonghua1984/newrelic-manager
@@ -35,9 +35,12 @@ strategy:
 
 revisionHistoryLimit: 10
 
+redis:
+  enabled: true
+  persistence:
+    size: 1Gi
+
 celery:
   enabled: true
-  replicaCount: 1
   queues: "batch,install,default"
   logLevel: info
-  brokerUrl: "redis://redis:6379/0"
