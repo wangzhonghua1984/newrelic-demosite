@@ -1,8 +1,8 @@
-replicaCount: 3
+replicaCount: 1
 
 image:
   repository: ghcr.io/wangzhonghua1984/newrelic-manager
-  tag: 6c971a57b1214e38ebcd40e9c227f4b418d43711
+  tag: 2cfbc24fefa6f6b2c71b65d5351a1d1916431c56
   pullPolicy: Always
 
 imagePullSecrets:
@@ -34,3 +34,10 @@ strategy:
   maxUnavailable: 25%
 
 revisionHistoryLimit: 10
+
+celery:
+  enabled: true
+  replicaCount: 1
+  queues: "batch,install,default"
+  logLevel: info
+  brokerUrl: "redis://redis:6379/0"
