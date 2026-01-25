@@ -2,7 +2,7 @@ replicaCount: 3
 
 image:
   repository: ghcr.io/wangzhonghua1984/newrelic-manager
-  tag: 54c2c8ebedc92222bb46aa28ac4dfb99b82fd431
+  tag: 1fa021f6672f61c8e57e79e31df2cf44adda54de
   pullPolicy: Always
 
 imagePullSecrets:
